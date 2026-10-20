@@ -1,5 +1,7 @@
 import unittest
+
 from app import app
+
 
 class TestApp(unittest.TestCase):
     def test_home(self):
@@ -10,6 +12,7 @@ class TestApp(unittest.TestCase):
             response.data.decode("utf-8"),
             "Hello, Jenkins Multi-Stage Pipeline!"
         )
+
 
 if __name__ == "__main__":
     unittest.main()
