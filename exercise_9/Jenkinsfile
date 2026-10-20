@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Installing dependencies...'
+                sh 'python3 -m pip install --user -r requirements.txt'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running unit tests...'
+                sh 'python3 -m unittest discover -s .'
+            }
+        }
+
+        stage('Code Quality') {
+            steps {
+                echo 'Checking code quality...'
+                sh 'python3 -m pip install --user flake8'
+                sh 'python3 -m flake8 app.py test_app.py'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Copying application to deployment directory...'
+                sh '''
+                    mkdir -p "${WORKSPACE}/python-app-deploy"
+                    cp app.py requirements.txt "${WORKSPACE}/python-app-deploy/"
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check the console output.'
+        }
+    }
+}
