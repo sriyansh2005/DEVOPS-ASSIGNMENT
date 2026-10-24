@@ -38,3 +38,9 @@ OK
 Pipeline completed successfully!
 Finished: SUCCESS
 ```
+
+## Screenshots
+
+![Jenkins console — Build & Test](screenshots/jenkins-console-1.jpg)
+
+![Jenkins console — Code Quality & Deploy](screenshots/jenkins-console-2.jpg)

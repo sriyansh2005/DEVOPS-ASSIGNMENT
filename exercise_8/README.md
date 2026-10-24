@@ -28,3 +28,7 @@ Jenkins checks out the repo into its workspace, runs the script, and the console
 Hello, Jenkins!
 Finished: SUCCESS
 ```
+
+## Screenshot
+
+![Jenkins console output](screenshots/jenkins-console.jpg)
